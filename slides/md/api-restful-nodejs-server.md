@@ -295,7 +295,7 @@
 
 - Define las **dependencias** de nuestro proyecto.
 
-~~~{.JavaScript}
+~~~{.javascript}
 {
   "name" : "api-restful-nodejs-server",
   "version" : "0.0.1",
@@ -330,7 +330,7 @@ node app.js
 
 ## app.js
 
-~~~{.JavaScript}
+~~~{.javascript}
 // modulos requeridos
 var http, express, mongoose, app, server ...
 
@@ -371,7 +371,7 @@ server.listen(3000, function() {
 
 ## models/talkModel.js
 
-~~~{.JavaScript}
+~~~{.javascript}
 // modulos requeridos
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
@@ -406,7 +406,7 @@ module.exports = mongoose.model('Talk', talkSchema);
 
 ## routes/talkRoute.js
 
-~~~{.JavaScript}
+~~~{.javascript}
 module.exports = function(app) {
 
     // importamos servicios
@@ -450,7 +450,7 @@ module.exports = function(app) {
 
 ## services/talkService.js
 
-~~~{.JavaScript}
+~~~{.javascript}
 //importamos el modelo
 var Talk = require('../models/talkModel.js');
 

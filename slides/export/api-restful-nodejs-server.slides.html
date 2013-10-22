@@ -413,7 +413,7 @@ todos los métodos del protócolo HTTP.</code></pre></li>
 <ul>
 <li>Define las <strong>dependencias</strong> de nuestro proyecto.</li>
 </ul>
-<pre class="sourceCode JavaScript"><code class="sourceCode javascript">{
+<pre class="sourceCode javascript"><code class="sourceCode javascript">{
   <span class="st">&quot;name&quot;</span> : <span class="st">&quot;api-restful-nodejs-server&quot;</span>,
   <span class="st">&quot;version&quot;</span> : <span class="st">&quot;0.0.1&quot;</span>,
   <span class="st">&quot;dependencies&quot;</span> : {
@@ -438,7 +438,7 @@ todos los métodos del protócolo HTTP.</code></pre></li>
 <pre><code>node app.js</code></pre>
 </section><section id="app.js-1" class="slide level2">
 <h2><span class="header-section-number">5.5</span> app.js</h2>
-<pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span class="co">// modulos requeridos</span>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// modulos requeridos</span>
 <span class="kw">var</span> http, express, mongoose, app, <span class="ot">server</span> ...
 
 <span class="co">// configuramos app</span>
@@ -477,7 +477,7 @@ todos los métodos del protócolo HTTP.</code></pre></li>
 </ul>
 </section><section id="modelstalkmodel.js" class="slide level2">
 <h2><span class="header-section-number">5.8</span> models/talkModel.js</h2>
-<pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span class="co">// modulos requeridos</span>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// modulos requeridos</span>
 <span class="kw">var</span> mongoose = <span class="fu">require</span>(<span class="st">&#39;mongoose&#39;</span>);
 <span class="kw">var</span> Schema   = <span class="ot">mongoose</span>.<span class="fu">Schema</span>;
 
@@ -506,7 +506,7 @@ todos los métodos del protócolo HTTP.</code></pre></li>
 </ul>
 </section><section id="routestalkroute.js" class="slide level2">
 <h2><span class="header-section-number">5.10</span> routes/talkRoute.js</h2>
-<pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span class="ot">module</span>.<span class="fu">exports</span> = <span class="kw">function</span>(app) {
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">module</span>.<span class="fu">exports</span> = <span class="kw">function</span>(app) {
 
     <span class="co">// importamos servicios</span>
     <span class="kw">var</span> TalkService = <span class="fu">require</span>(<span class="st">&#39;../services/talkService.js&#39;</span>);
@@ -542,7 +542,7 @@ todos los métodos del protócolo HTTP.</code></pre></li>
 </ul>
 </section><section id="servicestalkservice.js" class="slide level2">
 <h2><span class="header-section-number">5.12</span> services/talkService.js</h2>
-<pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span class="co">//importamos el modelo</span>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//importamos el modelo</span>
 <span class="kw">var</span> Talk = <span class="fu">require</span>(<span class="st">&#39;../models/talkModel.js&#39;</span>);
 
 <span class="kw">var</span> findAllTalks = <span class="kw">function</span>(options) {
