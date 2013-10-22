@@ -1,6 +1,10 @@
+// modulos requeridos
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
+// definimos el modelo 'talk' con sus restricciones
+// también podemos definir relaciones con otros modelos
+// aquí no se ha hecho por simplificar
 var talkSchema = new Schema({
     talkName:           { type: String, required: true },
     talkDate:           { type: Date,   required: true },
@@ -9,4 +13,5 @@ var talkSchema = new Schema({
     talkPoints:         { type: Number, required: true, default:0 }
 });
 
+// exportamos el modelo
 module.exports = mongoose.model('Talk', talkSchema);

@@ -1,9 +1,12 @@
-var express = require("express"),
-    app = express(),
-    http = require("http"),
-    server = http.createServer(app),
-    mongoose = require('mongoose');
+// modulos requeridos
+var http = require("http");
+var express = require("express");
+var mongoose = require('mongoose');
 
+var app = express();
+var server = http.createServer(app);
+
+// configuramos app
 app.configure(function () {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -20,16 +23,19 @@ app.configure(function () {
     app.use(app.router);
 });
 
-routes = require('./routes/talkRoute')(app);
+// importamos las rutas
+var routes = require('./routes/talkRoute')(app);
 
+// conectamos con la base de datos
 mongoose.connect('mongodb://localhost/gul', function (error, res) {
-  if (error) {
-    console.log('ERROR: connecting to MongoDB Database. ' + error);
-  } else {
-    console.log('Connected to GUL MongoDB Database');
-  }
+    if (error) {
+        console.log('ERROR: connecting to MongoDB Database. ' + error);
+    } else {
+        console.log('Connected to GUL MongoDB Database');
+    }
 });
 
+// arrancamos el servidor
 server.listen(3000, function () {
-  console.log("node server running on http://localhost:3000");
+    console.log("node server running on http://localhost:3000");
 });

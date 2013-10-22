@@ -73,16 +73,16 @@ var saveTalk = function(options) {
 
     talk.save(function(error, newTalk) {
 
-      if(!error && newTalk) {
+        if(!error && newTalk) {
 
-        console.log('talk=' + newTalk + ' saved');
-        options.onSuccess(newTalk);
+            console.log('talk=' + newTalk + ' saved');
+            options.onSuccess(newTalk);
 
-      } else {
+        } else {
 
-        console.log('ERROR saving talk=' + talk + ': ' + error);
-        options.onError(error);
-      }
+            console.log('ERROR saving talk=' + talk + ': ' + error);
+            options.onError(error);
+        }
     });
 };
 
@@ -109,7 +109,6 @@ var findTalkByIdAndUpdate = function(options) {
         },
         onError : options.onError,
     });
-
 };
 
 var findTalkByIdAndRemove = function(options) {
@@ -137,7 +136,6 @@ var findTalkByIdAndRemove = function(options) {
         },
         onError : options.onError
     });
-
 };
 
 exports.findAllTalks          = findAllTalks;
