@@ -12,7 +12,7 @@ module.exports = function(app) {
             onSuccess: function(talks) {
                 res.jsonp(talks);
             },
-            
+
             onError: function(error) {
                 res.jsonp({error:error});
             }
@@ -34,7 +34,7 @@ module.exports = function(app) {
             onSuccess: function(talk) {
                 res.jsonp(talk);
             },
-            
+
             onError: function(error) {
                 res.jsonp({error:error});
             }
@@ -57,7 +57,7 @@ module.exports = function(app) {
             onSuccess: function(talk) {
                 res.jsonp(talk);
             },
-            
+
             onError: function(error) {
                 res.jsonp({error:error});
             }
@@ -68,7 +68,7 @@ module.exports = function(app) {
     var updateTalk = function(req, res) {
 
         console.log('PUT - routes/talkRoute.js/updateTalk');
-        
+
         var talkId = req.params.talkId;
         console.log('talkId=' + talkId);
 
@@ -84,7 +84,7 @@ module.exports = function(app) {
             onSuccess: function(talk) {
                 res.jsonp(talk);
             },
-            
+
             onError: function(error) {
                 res.jsonp({error:error});
             }
@@ -95,7 +95,7 @@ module.exports = function(app) {
     var deleteTalk = function(req, res) {
 
         console.log('DELETE - routes/talkRoute.js/deleteTalk');
-        
+
         var talkId = req.params.talkId;
         console.log('talkId=' + talkId);
 
@@ -106,7 +106,7 @@ module.exports = function(app) {
             onSuccess: function(talk) {
                 res.jsonp(talk);
             },
-            
+
             onError: function(error) {
                 res.jsonp({error:error});
             }

@@ -1,7 +1,6 @@
 % Servidor API REST con Node.js
 % Adolfo Sanz De Diego
 % Octubre 2013
-
 # Acerca de
 
 ## El GUL
@@ -14,17 +13,17 @@
 
 ## ¿Dónde encontrarnos?
 
-- Twitter: [@guluc3m](http://twitter.com/guluc3m)
-- Lista: [gul@gul.uc3m.es](mailto:gul@gul.uc3m.es)
-- Ftp: [ftp://ftp.gul.uc3m.es](ftp://ftp.gul.uc3m.es)
-- Web: [http://www.gul.uc3m.es](http://www.gul.uc3m.es)
-- Podcast: [http://holamundo.gul.es/](http://holamundo.gul.es/)
-- Blog: [http://planeta.gul.uc3m.es/](http://planeta.gul.uc3m.es/)
+- Twitter:  [http://twitter.com/guluc3m](http://twitter.com/guluc3m)
+- Lista:    [gul@gul.uc3m.es](mailto:gul@gul.uc3m.es)
+- Ftp:      [ftp://ftp.gul.uc3m.es](ftp://ftp.gul.uc3m.es)
+- Web:      [http://www.gul.uc3m.es](http://www.gul.uc3m.es)
+- Podcast:  [http://holamundo.gul.es/](http://holamundo.gul.es/)
+- Blog:     [http://planeta.gul.uc3m.es/](http://planeta.gul.uc3m.es/)
 - Linkedin: [http://www.linkedin.com/groups?gid=3451836](http://www.linkedin.com/groups?gid=3451836)
 
 ## Adolfo Sanz De Diego
 
-![asanzdiego](../img/avatar-asanzdiego.jpg)
+![](../img/avatar-asanzdiego.png)
 
 ## Mi CV resumido
 
@@ -33,26 +32,26 @@
 - Hoy en día:
 
     - **Profesor de FP de informática**:
-    
+
             - Hardware, Sistemas Operativos, Redes, Programación
-    
+
     - **Formador Freelance**:
-    
+
             - Java, Android
             - JavaScript, jQuery
             - JSF, Spring, Hibernate y Groovy&Grails
-    
-    - Programo en mis tiempos libres.
+
+    - **Me gusta programar**
 
 ## Hackalover
 
+![](../img/hackathon-lovers.png)
+
+- **Para los amantes de los hackathones**
+
 - **Meetup**: [http://www.meetup.com/Hackathon-Lovers/](http://www.meetup.com/Hackathon-Lovers/)
 
-![HackathonLovers](../img/hackathon-lovers-logo-300.png)
-
 - **Twitter**: [http://twitter.com/HackathonLovers](http://twitter.com/HackathonLovers)
-
-![HackathonLovers](../img/hackathon-lovers-logo-cuadrado.png)
 
 ## ¿Donde encontrarme?
 
@@ -60,22 +59,18 @@
 
 - AboutMe: **[http://about.me/asanzdiego](http://about.me/asanzdiego)**
 
-    - [GitHub](http://github.com/asanzdiego/)
-    - [Twitter](http://twitter.com/asanzdiego)
-    - [Blog](http://asanzdiego.blogspot.com.es)
-    - [LinkedIn](http://www.linkedin.com/in/asanzdiego)
-    - [Google+](http://plus.google.com/118434794733307240711)
+    - GitHub:   [http://github.com/asanzdiego/](http://github.com/asanzdiego/)
+    - Twitter:  [http://twitter.com/asanzdiego](http://twitter.com/asanzdiego)
+    - Blog:     [http://asanzdiego.blogspot.com.es](http://asanzdiego.blogspot.com.es)
+    - LinkedIn: [http://www.linkedin.com/in/asanzdiego](http://www.linkedin.com/in/asanzdiego)
 
 ## Créditos
 
-- Agradecimientos a Carlos Azustre ([@carlosazaustre](http://twitter.com/carlosazaustre))
+- Agradecimientos a Carlos Azustre ([http://twitter.com/carlosazaustre](http://twitter.com/carlosazaustre))
 
-    - [Cómo crear una API REST usando Node.JS](http://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/)
+    - Cómo crear una API REST usando Node.JS
+    - [http://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/](http://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/)
 
-- Y a la empresa [redradix](http://redradix.com/)
-
-    - [Curso de Node.js](http://redradix.com/courses/node)
-    
 ## Licencia
 
 - Estas **transparencias** están bajo una licencia:
@@ -88,85 +83,76 @@
 
 ## Aplicación estándar
 
-![Esquema APIs RESTful 1](../img/esquema-api-rest-01.png)
+![](../img/esquema-api-rest-01.png)
 
 ## Introducimos API
 
-![Esquema APIs RESTful 2](../img/esquema-api-rest-02.png)
+![](../img/esquema-api-rest-02.png)
 
 ## Separación Roles
 
-![Esquema APIs RESTful 3](../img/esquema-api-rest-03.png)
+![](../img/esquema-api-rest-03.png)
 
 ## ¿Y ahora qué?
 
-![Esquema APIs RESTful 4](../img/esquema-api-rest-04.png)
+![](../img/esquema-api-rest-04.png)
 
 ## Servicios externos
 
-![Esquema APIs RESTful 5](../img/esquema-api-rest-05.png)
+![](../img/esquema-api-rest-05.png)
 
 ## Apps clientes
 
-![Esquema APIs RESTful 6](../img/esquema-api-rest-06.png)
+![](../img/esquema-api-rest-06.png)
 
 ## Apps de servicios
 
-![Esquema APIs RESTful 7](../img/esquema-api-rest-07.png)
+![](../img/esquema-api-rest-07.png)
 
 ## Apps mixtas
 
-![Esquema APIs RESTful 8](../img/esquema-api-rest-08.png)
+![](../img/esquema-api-rest-08.png)
 
 ## Plataforma
 
-![Esquema APIs RESTful 9](../img/esquema-api-rest-09.png)
+![](../img/esquema-api-rest-09.png)
 
 ## ¿Quien expone APIs?
 
-![APIs 1](../img/apis-1.png)
+![](../img/apis-1.png)
 
 ## ¿Quien expone APIs?
 
-![APIs 2](../img/apis-2.png)
+![](../img/apis-2.png)
 
 ## ¿Quien expone APIs?
 
-![APIs 3](../img/apis-3.png)
+![](../img/apis-3.png)
 
 ## Exponlas tú
 
-![Ejemlo Taza](../img/cup.jpg)
+![](../img/cup.png)
 
 ## Exponlas tú
 
-![Ejemlo Taza Ece Homo](../img/cup-ecce-homo.jpg)
+![](../img/cup-relaxing.png)
 
 ## Exponlas tú
 
-![Ejemlo Taza Ece Homo Guay](../img/cup-ecce-homo-guay.jpg)
+![](../img/cup-ecce-homo.png)
 
 # APIs RESTful
 
 ## ¿Qué es REST?
 
-- REST (**Representational State Transfer**) es una técnica de arquitectura software para sistemas hipermedia distribuidos como la World Wide Web.
+- REST (**Representational State Transfer**) es una técnica de arquitectura de
+  software para sistemas hipermedia distribuidos como la World Wide Web.
 
-## ¿Qué es REST?
-
-![Julio Iglesias WTF](../img/julio-iglesias-wtf.png)
-
-## ¿Qué es REST?
-
-- Una **URL** (Uniform Resource Locator) representa un **recurso**.
+- En REST una **URL** (Uniform Resource Locator) representa un **recurso**.
 
 - Se puede acceder al recurso o modificarlo mediante los **métodos del protocolo HTTP**:
 
-        - POST, GET, PUT, DELETE
-
-## ¿Qué es REST?
-
-![Julio Iglesias SOLO ESO](../img/julio-iglesias-solo-eso.png)
+        GET, POST, PUT, DELETE
 
 ## Ejemplo API
 
@@ -174,7 +160,7 @@
 
     - GET > Devuelve todas las charlas.
     - POST > Crear una nueva charla.
-    
+
 - **http://myhost.com/talk/123**
 
     - GET > Devuelve la charla con id=123
@@ -222,12 +208,12 @@
 - A veces el **ful** se confunde con **full** = completo.
 
     - Y se refiere a los servicios web REST**full** 
-    
+
             Aquellos que implementan una API con
             todos los métodos del protócolo HTTP.
-      
+
     - Y se refiere a los servicios web REST (**sin el full**)
-      
+
             Aquellos que NO implementan una API con
             todos los métodos del protócolo HTTP.
 
@@ -235,13 +221,11 @@
 
 ## Introducción
 
-![Node.js](../img/nodejs.png)
+![](../img/nodejs.png)
 
-- **Node.js** permite programar en **Javascript del lado del servidor**
-  
+- **Node.js** permite programar en **Javascript del lado del servidor**.
+
 - Pensado para **un manejo de E/S orientada a eventos**.
-
-- Pensado para **la creación de programas de red altamente escalables**.
 
 ## Ejecución
 
@@ -257,9 +241,11 @@
 
     - y por tanto mucha CPU inactiva por tarea.
 
-- Pero hay **muchos clientes**
+- Y hay **muchos clientes**
 
     - que compensan esa inactividad de la CPU.
+
+- Pensado para **la creación de programas de red altamente escalables**.
 
 ## Otros conceptos
 
@@ -283,13 +269,13 @@
 
 ## Aburrido
 
-![Gato Aburrido](../img/gato-aburrido.png)
+![](../img/gato-aburrido.png)
 
 # Código
 
 ## Aplausos
 
-![Aplausos ANimados](../img/aplausos.gif)
+![](../img/aplausos.gif)
 
 ## package.json
 
@@ -409,7 +395,6 @@ module.exports = mongoose.model('Talk', talkSchema);
 ~~~{.javascript}
 module.exports = function(app) {
 
-    // importamos servicios
     var TalkService = require('../services/talkService.js');
 
     var findTalks = function(req, res) {
@@ -461,14 +446,8 @@ var findTalkById = function(options) {
     Talk.findById(options.talkId, function(error, talk) {...});
 };
 var saveTalk = function(options) {...};
-var findTalkByIdAndUpdate = function(options) {
-    findTalkById({
-       ...
-       saveTalk({...});
-    });
-};
+var findTalkByIdAndUpdate = function(options) {...};
 var findTalkByIdAndRemove = function(options) {...});
-};
 
 // exportamos los servicios
 exports.findAllTalks          = findAllTalks;

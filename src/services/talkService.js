@@ -9,7 +9,7 @@ var findAllTalks = function(options) {
     options.onError   = options.onError   || function() {};
 
     Talk.find(function(error, talks) {
-        
+
         if(!error) {
 
             console.log('talks=' + talks);
@@ -28,7 +28,7 @@ var findTalkById = function(options) {
     console.log('services/talkService.js/findTalkById');
     console.log('options=%j', options);
 
-    options.talkId    = options.talkId   || 0;
+    options.talkId    = options.talkId    || 0;
     options.onSuccess = options.onSuccess || function() {};
     options.onError   = options.onError   || function() {};
 
@@ -42,7 +42,7 @@ var findTalkById = function(options) {
                 options.onSuccess(talk);
 
             } else {
-                
+
                 var errorMessage = 'Talk not found';
                 console.log('ERROR retrieving talk with talkId="' + options.talkId + '": ' + errorMessage);
                 options.onError(errorMessage);
@@ -59,7 +59,7 @@ var saveTalk = function(options) {
 
     console.log('services/talkService.js/saveTalk');
     console.log('options=%j', options);
-    
+
     options.onSuccess = options.onSuccess || function() {};
     options.onError   = options.onError   || function() {};
 
@@ -90,7 +90,7 @@ var findTalkByIdAndUpdate = function(options) {
 
     console.log('services/talkService.js/findTalkByIdAndUpdate');
     console.log('options=%j', options);
-    
+
     findTalkById({
         talkId: options.talkId,
         onSuccess: function(talk) {
