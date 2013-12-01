@@ -53,6 +53,18 @@
 
 - **Twitter**: [http://twitter.com/HackathonLovers](http://twitter.com/HackathonLovers)
 
+## Tweets Sentiment
+
+![](../img/tweets-sentiment-logo-grande.png)
+
+- Es un analizador de tweets que extrae información semántica para conocer
+si el sentimiento general de los tweets de un determinado tema
+es positivo o negativo.
+
+- **Web**: [http://tweetssentiment.com/](http://tweetssentiment.com/)
+
+- **Twitter**: [http://twitter.com/TweetsSentiment](http://twitter.com/TweetsSentiment)
+
 ## ¿Donde encontrarme?
 
 - Mi nick: **asanzdiego**
@@ -76,8 +88,26 @@
 - Estas **transparencias** están bajo una licencia:
     - [Creative Commons Reconocimiento-CompartirIgual 3.0](http://creativecommons.org/licenses/by-sa/3.0/es/)
 
-- El **código fuente** de los programas están bajo una licencia:
+- El **código** de los programas están bajo una licencia:
     - [GPL 3.0](http://www.viti.es/gnu/licenses/gpl.html)
+
+## Fuentes
+
+- Transparencias:
+
+    - SlideShare:
+
+        - [http://www.slideshare.net/asanzdiego/api-restfulnodejsserverbeamer](http://www.slideshare.net/asanzdiego/api-restfulnodejsserverbeamer)
+
+    - GitPages:
+
+        - [http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/api-restful-nodejs-server.slides.html](http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/api-restful-nodejs-server.slides.html)
+
+- Código:
+
+    - GitHub:
+
+        - [http://github.com/asanzdiego/curso-api-restful-nodejs-server-2013/tree/master/src](http://github.com/asanzdiego/curso-api-restful-nodejs-server-2013/tree/master/src)
 
 # APIs ¿Para qué?
 
