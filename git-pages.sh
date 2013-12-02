@@ -1,8 +1,8 @@
 #! /bin/bash
 
-echo "****************************************************"
-echo "* PUSH CHANGES TO GIT PAGES POINTING TO PRODUCTION *"
-echo "****************************************************"
+echo "*****************************"
+echo "* PUSH CHANGES TO GIT PAGES *"
+echo "*****************************"
 
 FROM='/home/adolfo/Curro/cursos/curso-api-restful-nodejs-server-2013'
 FOLDERTO='/home/adolfo/Curro/github/gh-pages'
