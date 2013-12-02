@@ -1,8 +1,8 @@
 #! /bin/bash
 
-echo "**************************************************"
-echo "* PUSH CHANGES TO GITHUB POINTING TO DEVELOPMENT *"
-echo "**************************************************"
+echo "**************************"
+echo "* PUSH CHANGES TO GITHUB *"
+echo "**************************"
 
 git diff | grep +++
 

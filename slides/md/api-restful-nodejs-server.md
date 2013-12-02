@@ -39,13 +39,14 @@
 
             - Java, Android
             - JavaScript, jQuery
-            - JSF, Spring, Hibernate y Groovy&Grails
+            - JSF, Spring, Hibernate
+            - Groovy & Grails
 
     - **Me gusta programar**
 
 ## Hackalover
 
-![](../img/hackathon-lovers.png)
+![](../img/hackathon-lovers-logo.png)
 
 - **Para los amantes de los hackathones**
 
@@ -55,9 +56,9 @@
 
 ## Tweets Sentiment
 
-![](../img/tweets-sentiment-logo-grande.png)
+![](../img/tweets-sentiment-logo.png)
 
-- Es un analizador de tweets que extrae información semántica para conocer
+- Es un **analizador de tweets** que extrae información semántica para conocer
 si el sentimiento general de los tweets de un determinado tema
 es positivo o negativo.
 
@@ -78,10 +79,14 @@ es positivo o negativo.
 
 ## Créditos
 
-- Agradecimientos a Carlos Azustre ([http://twitter.com/carlosazaustre](http://twitter.com/carlosazaustre))
+- Agradecimientos a **Carlos Azustre** ([http://twitter.com/carlosazaustre](http://twitter.com/carlosazaustre))
 
     - Cómo crear una API REST usando Node.JS
     - [http://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/](http://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/)
+
+- Estas **transparencias** están hechas con:
+
+    - [https://github.com/asanzdiego/deck.js-pandoc-slides](https://github.com/asanzdiego/deck.js-pandoc-slides)
 
 ## Licencia
 
@@ -99,7 +104,7 @@ es positivo o negativo.
 
         - [http://www.slideshare.net/asanzdiego/api-restfulnodejsserverbeamer](http://www.slideshare.net/asanzdiego/api-restfulnodejsserverbeamer)
 
-    - GitPages:
+    - GitHub Pages:
 
         - [http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/api-restful-nodejs-server.slides.html](http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/api-restful-nodejs-server.slides.html)
 
