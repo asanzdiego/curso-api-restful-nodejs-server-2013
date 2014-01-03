@@ -8,7 +8,7 @@
 
 - GitHub Pages:
 
-    - [http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/api-restful-nodejs-server.slides.html](http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/api-restful-nodejs-server.slides.html)
+    - [http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/servidor-api-rest-con-nodejs-reveal-slides.html](http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/servidor-api-rest-con-nodejs-reveal-slides.html)
 
 ## Código
 
