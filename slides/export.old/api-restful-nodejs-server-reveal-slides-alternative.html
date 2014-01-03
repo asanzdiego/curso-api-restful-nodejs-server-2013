@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Servidor API REST con Node.js" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <meta name="copyright" content="Servidor API REST con Node.js - Adolfo Sanz De Diego -  Octubre 2013" /> 
+  <title>Servidor API REST con Node.js</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.min.css">
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    pre {
+      background: rgba(255, 255, 255, 0.9);
+      color: #222;
+    }
+    code {
+      white-space: pre;
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Servidor API REST con Node.js</h2>
+    <h2 class="author">Adolfo Sanz De Diego</h2>
+    <h3 class="date">Octubre 2013</h3>
+</section>
+
+<section><section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">1</span> Acerca de</h1></section><section id="el-gul" class="slide level2">
+<h2><span class="header-section-number">1.1</span> El GUL</h2>
+<ul>
+<li>El GUL es el <strong>Grupo de Usuarios de Linux de la UC3M</strong>.</li>
+<li>Grupo de personas con inquietudes en torno a la informática.</li>
+<li>Con la idea común de la utilización y promoción del <strong>Software Libre</strong>.</li>
+<li>Quedamos de vez en cuando y organizamos actividades sobre todo esto.</li>
+<li>El punto de unión es la <strong>lista de correo</strong> que está abierta a todo el mundo.</li>
+</ul>
+</section><section id="dónde-encontrarnos" class="slide level2">
+<h2><span class="header-section-number">1.2</span> ¿Dónde encontrarnos?</h2>
+<ul>
+<li>Twitter: <a href="http://twitter.com/guluc3m">http://twitter.com/guluc3m</a></li>
+<li>Lista: <a href="mailto:gul@gul.uc3m.es">gul@gul.uc3m.es</a></li>
+<li>Ftp: <a href="ftp://ftp.gul.uc3m.es">ftp://ftp.gul.uc3m.es</a></li>
+<li>Web: <a href="http://www.gul.uc3m.es">http://www.gul.uc3m.es</a></li>
+<li>Podcast: <a href="http://holamundo.gul.es/">http://holamundo.gul.es/</a></li>
+<li>Blog: <a href="http://planeta.gul.uc3m.es/">http://planeta.gul.uc3m.es/</a></li>
+<li>Linkedin: <a href="http://www.linkedin.com/groups?gid=3451836">http://www.linkedin.com/groups?gid=3451836</a></li>
+</ul>
+</section><section id="adolfo-sanz-de-diego" class="slide level2">
+<h2><span class="header-section-number">1.3</span> Adolfo Sanz De Diego</h2>
+<figure>
+<img src="../img/avatar-asanzdiego.png" />
+</figure>
+</section><section id="mi-cv-resumido" class="slide level2">
+<h2><span class="header-section-number">1.4</span> Mi CV resumido</h2>
+<ul>
+<li><p><strong>Antiguo programador web JEE</strong></p></li>
+<li><p>Hoy en día:</p>
+<ul>
+<li><p><strong>Profesor de FP de informática</strong>:</p>
+<pre><code>- Hardware, Sistemas Operativos
+- Redes, Programación</code></pre></li>
+<li><p><strong>Formador Freelance</strong>:</p>
+<pre><code>- Java, Android
+- JavaScript, jQuery
+- JSF, Spring, Hibernate
+- Groovy &amp; Grails</code></pre></li>
+<li><p><strong>Me gusta programar</strong></p></li>
+</ul></li>
+</ul>
+</section><section id="hackalover" class="slide level2">
+<h2><span class="header-section-number">1.5</span> Hackalover</h2>
+<figure>
+<img src="../img/hackathon-lovers-logo.png" />
+</figure>
+<ul>
+<li><p><strong>Para los amantes de los hackathones</strong></p></li>
+<li><p><strong>Meetup</strong>: <a href="http://www.meetup.com/Hackathon-Lovers/">http://www.meetup.com/Hackathon-Lovers/</a></p></li>
+<li><p><strong>Twitter</strong>: <a href="http://twitter.com/HackathonLovers">http://twitter.com/HackathonLovers</a></p></li>
+</ul>
+</section><section id="tweets-sentiment" class="slide level2">
+<h2><span class="header-section-number">1.6</span> Tweets Sentiment</h2>
+<figure>
+<img src="../img/tweets-sentiment-logo.png" />
+</figure>
+<ul>
+<li><p>Es un <strong>analizador de tweets</strong> que extrae información semántica para conocer si el sentimiento general de los tweets de un determinado tema es positivo o negativo.</p></li>
+<li><p><strong>Web</strong>: <a href="http://tweetssentiment.com/">http://tweetssentiment.com/</a></p></li>
+<li><p><strong>Twitter</strong>: <a href="http://twitter.com/TweetsSentiment">http://twitter.com/TweetsSentiment</a></p></li>
+</ul>
+</section><section id="donde-encontrarme" class="slide level2">
+<h2><span class="header-section-number">1.7</span> ¿Donde encontrarme?</h2>
+<ul>
+<li><p>Mi nick: <strong>asanzdiego</strong></p></li>
+<li><p>AboutMe: <strong><a href="http://about.me/asanzdiego">http://about.me/asanzdiego</a></strong></p>
+<ul>
+<li>GitHub: <a href="http://github.com/asanzdiego/">http://github.com/asanzdiego/</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">http://twitter.com/asanzdiego</a></li>
+<li>Blog: <a href="http://asanzdiego.blogspot.com.es">http://asanzdiego.blogspot.com.es</a></li>
+<li>LinkedIn: <a href="http://www.linkedin.com/in/asanzdiego">http://www.linkedin.com/in/asanzdiego</a></li>
+</ul></li>
+</ul>
+</section><section id="créditos" class="slide level2">
+<h2><span class="header-section-number">1.8</span> Créditos</h2>
+<ul>
+<li><p>Agradecimientos a <strong>Carlos Azustre</strong> (<a href="http://twitter.com/carlosazaustre">http://twitter.com/carlosazaustre</a>)</p>
+<ul>
+<li>Cómo crear una API REST usando Node.JS</li>
+<li><a href="http://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/">http://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/</a></li>
+</ul></li>
+<li><p>Estas <strong>transparencias</strong> están hechas con:</p>
+<ul>
+<li><a href="https://github.com/asanzdiego/deck.js-pandoc-slides">https://github.com/asanzdiego/deck.js-pandoc-slides</a></li>
+</ul></li>
+</ul>
+</section><section id="licencia" class="slide level2">
+<h2><span class="header-section-number">1.9</span> Licencia</h2>
+<ul>
+<li>Estas <strong>transparencias</strong> están bajo una licencia:
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+<li>El <strong>código</strong> de los programas están bajo una licencia:
+<ul>
+<li><a href="http://www.viti.es/gnu/licenses/gpl.html">GPL 3.0</a></li>
+</ul></li>
+</ul>
+</section><section id="fuentes" class="slide level2">
+<h2><span class="header-section-number">1.10</span> Fuentes</h2>
+<ul>
+<li><p>Transparencias:</p>
+<ul>
+<li><p>SlideShare:</p>
+<ul>
+<li><a href="http://www.slideshare.net/asanzdiego/servidor-api-rest-con-nodejs">http://www.slideshare.net/asanzdiego/servidor-api-rest-con-nodejs</a></li>
+</ul></li>
+<li><p>GitHub Pages:</p>
+<ul>
+<li><a href="http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/api-restful-nodejs-server.reveal.slides.html">http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/api-restful-nodejs-server.reveal.slides.html</a></li>
+</ul></li>
+</ul></li>
+<li><p>Código:</p>
+<ul>
+<li><p>GitHub:</p>
+<ul>
+<li><a href="http://github.com/asanzdiego/curso-api-restful-nodejs-server-2013/tree/master/src">http://github.com/asanzdiego/curso-api-restful-nodejs-server-2013/tree/master/src</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="apis-para-qué" class="titleslide slide level1"><h1><span class="header-section-number">2</span> APIs ¿Para qué?</h1></section><section id="aplicación-estándar" class="slide level2">
+<h2><span class="header-section-number">2.1</span> Aplicación estándar</h2>
+<figure>
+<img src="../img/esquema-api-rest-01.png" />
+</figure>
+</section><section id="introducimos-api" class="slide level2">
+<h2><span class="header-section-number">2.2</span> Introducimos API</h2>
+<figure>
+<img src="../img/esquema-api-rest-02.png" />
+</figure>
+</section><section id="separación-roles" class="slide level2">
+<h2><span class="header-section-number">2.3</span> Separación Roles</h2>
+<figure>
+<img src="../img/esquema-api-rest-03.png" />
+</figure>
+</section><section id="y-ahora-qué" class="slide level2">
+<h2><span class="header-section-number">2.4</span> ¿Y ahora qué?</h2>
+<figure>
+<img src="../img/esquema-api-rest-04.png" />
+</figure>
+</section><section id="servicios-externos" class="slide level2">
+<h2><span class="header-section-number">2.5</span> Servicios externos</h2>
+<figure>
+<img src="../img/esquema-api-rest-05.png" />
+</figure>
+</section><section id="apps-clientes" class="slide level2">
+<h2><span class="header-section-number">2.6</span> Apps clientes</h2>
+<figure>
+<img src="../img/esquema-api-rest-06.png" />
+</figure>
+</section><section id="apps-de-servicios" class="slide level2">
+<h2><span class="header-section-number">2.7</span> Apps de servicios</h2>
+<figure>
+<img src="../img/esquema-api-rest-07.png" />
+</figure>
+</section><section id="apps-mixtas" class="slide level2">
+<h2><span class="header-section-number">2.8</span> Apps mixtas</h2>
+<figure>
+<img src="../img/esquema-api-rest-08.png" />
+</figure>
+</section><section id="plataforma" class="slide level2">
+<h2><span class="header-section-number">2.9</span> Plataforma</h2>
+<figure>
+<img src="../img/esquema-api-rest-09.png" />
+</figure>
+</section><section id="quien-expone-apis" class="slide level2">
+<h2><span class="header-section-number">2.10</span> ¿Quien expone APIs?</h2>
+<figure>
+<img src="../img/apis-1.png" />
+</figure>
+</section><section id="quien-expone-apis-1" class="slide level2">
+<h2><span class="header-section-number">2.11</span> ¿Quien expone APIs?</h2>
+<figure>
+<img src="../img/apis-2.png" />
+</figure>
+</section><section id="quien-expone-apis-2" class="slide level2">
+<h2><span class="header-section-number">2.12</span> ¿Quien expone APIs?</h2>
+<figure>
+<img src="../img/apis-3.png" />
+</figure>
+</section><section id="exponlas-tú" class="slide level2">
+<h2><span class="header-section-number">2.13</span> Exponlas tú</h2>
+<figure>
+<img src="../img/cup.png" />
+</figure>
+</section><section id="exponlas-tú-1" class="slide level2">
+<h2><span class="header-section-number">2.14</span> Exponlas tú</h2>
+<figure>
+<img src="../img/cup-relaxing.png" />
+</figure>
+</section><section id="exponlas-tú-2" class="slide level2">
+<h2><span class="header-section-number">2.15</span> Exponlas tú</h2>
+<figure>
+<img src="../img/cup-ecce-homo.png" />
+</figure>
+</section></section>
+<section><section id="apis-restful" class="titleslide slide level1"><h1><span class="header-section-number">3</span> APIs RESTful</h1></section><section id="qué-es-rest" class="slide level2">
+<h2><span class="header-section-number">3.1</span> ¿Qué es REST?</h2>
+<ul>
+<li><p>REST (<strong>Representational State Transfer</strong>) es una técnica de arquitectura de software para sistemas hipermedia distribuidos como la World Wide Web.</p></li>
+<li><p>En REST una <strong>URL</strong> (Uniform Resource Locator) representa un <strong>recurso</strong>.</p></li>
+<li><p>Se puede acceder al recurso o modificarlo mediante los <strong>métodos del protocolo HTTP</strong>:</p>
+<pre><code>GET, POST, PUT, DELETE</code></pre></li>
+</ul>
+</section><section id="ejemplo-api" class="slide level2">
+<h2><span class="header-section-number">3.2</span> Ejemplo API</h2>
+<ul>
+<li><p><strong>http://myhost.com/talk</strong></p>
+<ul>
+<li>GET &gt; Devuelve todas las charlas.</li>
+<li>POST &gt; Crear una nueva charla.</li>
+</ul></li>
+<li><p><strong>http://myhost.com/talk/123</strong></p>
+<ul>
+<li>GET &gt; Devuelve la charla con id=123</li>
+<li>PUT &gt; Actualiza la charla con id=123</li>
+<li>DELETE &gt; Borra la charla con id=123</li>
+</ul></li>
+</ul>
+</section><section id="manejo-de-errores" class="slide level2">
+<h2><span class="header-section-number">3.3</span> Manejo de errores</h2>
+<ul>
+<li><p><strong>Se pueden utilizar los errores del protocolo HTTP</strong>:</p>
+<ul>
+<li>200 Successful</li>
+<li>201 Created</li>
+<li>202 Accepted</li>
+<li>301 Moved Permanently</li>
+<li>400 Bad Request</li>
+<li>401 Unauthorised</li>
+<li>402 Payment Required</li>
+<li>403 Forbidden</li>
+<li>404 Not Found</li>
+<li>405 Method Not Allowed</li>
+<li>500 Internal Server Error</li>
+<li>501 Not Implemented</li>
+</ul></li>
+</ul>
+</section><section id="por-qué-rest" class="slide level2">
+<h2><span class="header-section-number">3.4</span> ¿Por qué REST?</h2>
+<ul>
+<li>Es <strong>más sencillo</strong> (tanto la API como la implementación).</li>
+<li>Es <strong>más rápido</strong> (peticiones más lijeras que se pueden cachear).</li>
+<li>Es <strong>multiformato</strong> (HTML, XML, JSON, etc.).</li>
+<li>Se complementa muy bien con <strong>AJAX</strong>.</li>
+</ul>
+</section><section id="rest-vs-restful" class="slide level2">
+<h2><span class="header-section-number">3.5</span> REST vs RESTful</h2>
+<ul>
+<li><p>REST se refiere a un tipo de arquitectura de software</p>
+<ul>
+<li>Se utiliza como <strong>nombre</strong></li>
+<li>Se utiliza como por ejemplo: success = éxito.</li>
+</ul></li>
+<li><p>Si un servicio web es REST<strong>ful</strong> indica que implementa dicha arquitectura.</p>
+<ul>
+<li>Se utiliza como <strong>adjetivo</strong></li>
+<li>Se utiliza como por ejemplo: success<strong>ful</strong> = éxito<strong>so</strong>).</li>
+</ul></li>
+</ul>
+</section><section id="rest-vs-restful-1" class="slide level2">
+<h2><span class="header-section-number">3.6</span> REST vs RESTful</h2>
+<ul>
+<li><p>A veces el <strong>ful</strong> se confunde con <strong>full</strong> = completo.</p>
+<ul>
+<li><p>Y se refiere a los servicios web REST<strong>full</strong></p>
+<pre><code>Aquellos que implementan una API con
+todos los métodos del protócolo HTTP.</code></pre></li>
+<li><p>Y se refiere a los servicios web REST (<strong>sin el full</strong>)</p>
+<pre><code>Aquellos que NO implementan una API con
+todos los métodos del protócolo HTTP.</code></pre></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="node.js" class="titleslide slide level1"><h1><span class="header-section-number">4</span> Node.js</h1></section><section id="introducción" class="slide level2">
+<h2><span class="header-section-number">4.1</span> Introducción</h2>
+<figure>
+<img src="../img/nodejs.png" />
+</figure>
+<ul>
+<li><p><strong>Node.js</strong> permite programar en <strong>Javascript del lado del servidor</strong>.</p></li>
+<li><p>Pensado para <strong>un manejo de E/S orientada a eventos</strong>.</p></li>
+</ul>
+</section><section id="ejecución" class="slide level2">
+<h2><span class="header-section-number">4.2</span> Ejecución</h2>
+<ul>
+<li>Ejecución <strong>concurrente</strong>
+<ul>
+<li>Muchos tareas</li>
+</ul></li>
+<li>Pero <strong>NO paralelo</strong>
+<ul>
+<li>Una única hebra</li>
+</ul></li>
+</ul>
+</section><section id="dónde-usarlo" class="slide level2">
+<h2><span class="header-section-number">4.3</span> ¿Dónde usarlo?</h2>
+<ul>
+<li><p>Cuando hay <strong>mucha E/S</strong></p>
+<ul>
+<li>y por tanto mucha CPU inactiva por tarea.</li>
+</ul></li>
+<li><p>Y hay <strong>muchos clientes</strong></p>
+<ul>
+<li>que compensan esa inactividad de la CPU.</li>
+</ul></li>
+<li><p>Pensado para <strong>la creación de programas de red altamente escalables</strong>.</p></li>
+</ul>
+</section><section id="otros-conceptos" class="slide level2">
+<h2><span class="header-section-number">4.4</span> Otros conceptos</h2>
+<ul>
+<li><strong>npm</strong> <a href="http://npmjs.org/">http://npmjs.org/</a>:
+<ul>
+<li>es el gestor de paquetes de Node.js.</li>
+</ul></li>
+<li><strong>expressjs</strong> <a href="http://expressjs.com/">http://expressjs.com/</a>:
+<ul>
+<li>es una librería para Node.js de desarrollo web.</li>
+</ul></li>
+<li><strong>mongoosejs</strong> <a href="http://mongoosejs.com/">http://mongoosejs.com/</a>:
+<ul>
+<li>es una librería para Node.js de modelado de objetos de MongoDB <a href="http://www.mongodb.org/">http://www.mongodb.org/</a></li>
+</ul></li>
+</ul>
+</section><section id="primero-pasos" class="slide level2">
+<h2><span class="header-section-number">4.5</span> Primero pasos</h2>
+<ul>
+<li>Instalar <strong>Node.js</strong>
+<ul>
+<li><a href="http://nodejs.org/download/">http://nodejs.org/download/</a></li>
+</ul></li>
+<li>Instalar <strong>MongoDB</strong>
+<ul>
+<li><a href="http://docs.mongodb.org/manual/installation/">http://docs.mongodb.org/manual/installation/</a></li>
+</ul></li>
+</ul>
+</section><section id="aburrido" class="slide level2">
+<h2><span class="header-section-number">4.6</span> Aburrido</h2>
+<figure>
+<img src="../img/gato-aburrido.png" />
+</figure>
+</section></section>
+<section><section id="código" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Código</h1></section><section id="aplausos" class="slide level2">
+<h2><span class="header-section-number">5.1</span> Aplausos</h2>
+<figure>
+<img src="../img/aplausos.gif" />
+</figure>
+</section><section id="package.json" class="slide level2">
+<h2><span class="header-section-number">5.2</span> package.json</h2>
+<ul>
+<li>Define las <strong>dependencias</strong> de nuestro proyecto.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">{
+  <span class="st">&quot;name&quot;</span> : <span class="st">&quot;api-restful-nodejs-server&quot;</span>,
+  <span class="st">&quot;version&quot;</span> : <span class="st">&quot;0.0.1&quot;</span>,
+  <span class="st">&quot;dependencies&quot;</span> : {
+    <span class="st">&quot;express&quot;</span> : <span class="st">&quot;3.x&quot;</span>,
+    <span class="st">&quot;mongoose&quot;</span> : <span class="st">&quot;3.6.20&quot;</span>
+  }
+}</code></pre>
+</section><section id="npm-install" class="slide level2">
+<h2><span class="header-section-number">5.3</span> npm install</h2>
+<ul>
+<li>Este comando instalará en la <strong>carpeta node_modules</strong> las dependencias de nuestro proyecto.</li>
+</ul>
+<pre><code>npm install</code></pre>
+</section><section id="app.js" class="slide level2">
+<h2><span class="header-section-number">5.4</span> app.js</h2>
+<ul>
+<li><p>Es el fichero principal.</p></li>
+<li><p>El nombre es lo de menos.</p></li>
+<li><p>A veces también se le suele llamar server.js</p></li>
+<li><p>Para ejecutar una aplicación de Node.js:</p></li>
+</ul>
+<pre><code>node app.js</code></pre>
+</section><section id="app.js-1" class="slide level2">
+<h2><span class="header-section-number">5.5</span> app.js</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// modulos requeridos</span>
+<span class="kw">var</span> http, express, mongoose, app, <span class="ot">server</span> ...
+
+<span class="co">// configuramos app</span>
+<span class="ot">app</span>.<span class="fu">configure</span>(<span class="kw">function</span> () {
+    <span class="co">// config...</span>
+});
+
+<span class="co">// importamos las rutas</span>
+<span class="kw">var</span> routes = <span class="fu">require</span>(<span class="st">&#39;./routes/talkRoute&#39;</span>)(app);
+
+<span class="co">// conectamos con la base de datos</span>
+<span class="ot">mongoose</span>.<span class="fu">connect</span>(<span class="st">&#39;mongodb://localhost/gul&#39;</span>, <span class="kw">function</span>(err, res) {
+    <span class="co">// console.log(&#39;Connected to GUL MongoDB Database&#39;);</span>
+});
+
+<span class="co">// arrancamos el servidor</span>
+<span class="ot">server</span>.<span class="fu">listen</span>(<span class="dv">3000</span>, <span class="kw">function</span>() {
+    <span class="co">// console.log(&quot;Server running on http://localhost:3000&quot;);</span>
+});</code></pre>
+</section><section id="directorios" class="slide level2">
+<h2><span class="header-section-number">5.6</span> Directorios</h2>
+<ul>
+<li><p>Puedes usar la estructura de directorios que quieras.</p></li>
+<li><p>Yo he usado esta:</p>
+<ul>
+<li><strong>models</strong>:</li>
+<li><strong>routes</strong>:</li>
+<li><strong>services</strong>:</li>
+</ul></li>
+</ul>
+</section><section id="models" class="slide level2">
+<h2><span class="header-section-number">5.7</span> models</h2>
+<ul>
+<li><p>Directorio con los modelos que se van a guardar en base de datos.</p></li>
+<li><p>Yo creo un fichero js para cada colección.</p></li>
+</ul>
+</section><section id="modelstalkmodel.js" class="slide level2">
+<h2><span class="header-section-number">5.8</span> models/talkModel.js</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// modulos requeridos</span>
+<span class="kw">var</span> mongoose = <span class="fu">require</span>(<span class="st">&#39;mongoose&#39;</span>);
+<span class="kw">var</span> Schema   = <span class="ot">mongoose</span>.<span class="fu">Schema</span>;
+
+<span class="co">// definimos el modelo &#39;talk&#39; con sus restricciones</span>
+<span class="co">// también podemos definir relaciones con otros modelos</span>
+<span class="co">// aquí no se ha hecho por simplificar</span>
+<span class="kw">var</span> talkSchema = <span class="kw">new</span> <span class="fu">Schema</span>({
+    <span class="dt">talkName</span>:           { <span class="dt">type</span>: String, <span class="dt">required</span>: <span class="kw">true</span> },
+    <span class="dt">talkDate</span>:           { <span class="dt">type</span>: Date,   <span class="dt">required</span>: <span class="kw">true</span> },
+    <span class="dt">talkSpeaker</span>:        { <span class="dt">type</span>: String, <span class="dt">required</span>: <span class="kw">true</span> },
+    <span class="dt">talkSpeakerMail</span>:    { <span class="dt">type</span>: String, <span class="dt">required</span>: <span class="kw">true</span>, 
+       <span class="dt">match</span>: <span class="ot">/</span><span class="fl">^</span><span class="bn">\w</span><span class="fl">+</span><span class="ot">@</span><span class="bn">[a-zA-Z_]</span><span class="fl">+?\.</span><span class="bn">[a-zA-Z]</span><span class="fl">{2,3}$</span><span class="ot">/</span> },
+    <span class="dt">talkPoints</span>:         { <span class="dt">type</span>: Number, <span class="dt">required</span>: <span class="kw">true</span>, <span class="kw">default</span>:<span class="dv">0</span> }
+});
+
+<span class="co">// exportamos el modelo</span>
+<span class="ot">module</span>.<span class="fu">exports</span> = <span class="ot">mongoose</span>.<span class="fu">model</span>(<span class="st">&#39;Talk&#39;</span>, talkSchema);</code></pre>
+</section><section id="routes" class="slide level2">
+<h2><span class="header-section-number">5.9</span> routes</h2>
+<ul>
+<li><p>Directorio con los mapeos de las rutas de la API RESTful.</p></li>
+<li><p>Aquí sólo gestiono la 'request' y el 'response'.</p></li>
+<li><p>Transformo la 'request' en un objeto 'options' y se le paso a un servicio.</p></li>
+<li><p>Lo que devuelva el servicio lo meto en el 'response'.</p></li>
+<li><p>Yo creo un fichero js para cada colección.</p></li>
+</ul>
+</section><section id="routestalkroute.js" class="slide level2">
+<h2><span class="header-section-number">5.10</span> routes/talkRoute.js</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">module</span>.<span class="fu">exports</span> = <span class="kw">function</span>(app) {
+
+    <span class="kw">var</span> TalkService = <span class="fu">require</span>(<span class="st">&#39;../services/talkService.js&#39;</span>);
+
+    <span class="kw">var</span> findTalks = <span class="kw">function</span>(req, res) {
+       <span class="ot">TalkService</span>.<span class="fu">findAllTalks</span>({...});
+    };
+    <span class="kw">var</span> findTalk = <span class="kw">function</span>(req, res) {
+       <span class="kw">var</span> talkId = <span class="ot">req</span>.<span class="ot">params</span>.<span class="fu">talkId</span>;
+       <span class="ot">TalkService</span>.<span class="fu">findTalkById</span>({...});
+    };
+    <span class="kw">var</span> addTalk = <span class="kw">function</span>(req, res) {...};
+    <span class="kw">var</span> updateTalk = <span class="kw">function</span>(req, res) {...};
+    <span class="kw">var</span> deleteTalk = <span class="kw">function</span>(req, res) {...};
+
+    <span class="co">// mapeamos método y URL a una función</span>
+    <span class="ot">app</span>.<span class="fu">get</span>(    <span class="st">&#39;/talk&#39;</span>,         findTalks);
+    <span class="ot">app</span>.<span class="fu">get</span>(    <span class="st">&#39;/talk/:talkId&#39;</span>, findTalk);
+    <span class="ot">app</span>.<span class="fu">post</span>(   <span class="st">&#39;/talk&#39;</span>,         addTalk);
+    <span class="ot">app</span>.<span class="fu">put</span>(    <span class="st">&#39;/talk/:talkId&#39;</span>, updateTalk);
+    <span class="ot">app</span>.<span class="fu">delete</span>( <span class="st">&#39;/talk/:talkId&#39;</span>, deleteTalk);
+}</code></pre>
+</section><section id="services" class="slide level2">
+<h2><span class="header-section-number">5.11</span> services</h2>
+<ul>
+<li><p>Aquí están los servicios que acceden a base de datos.</p></li>
+<li><p>Aquí no hay ni request ni response.</p></li>
+<li><p>Las funciones reciben un objeto 'options' con lo que necesita.</p></li>
+<li><p>Normalmente deben gestionar al menos un 'onSuccess' y un 'onError'.</p></li>
+<li><p>Hay funciones que además gestionan un 'onNotFound'.</p></li>
+<li><p>Un servicio puede llamar a otros servicios.</p></li>
+<li><p>Yo creo un fichero js para cada colección.</p></li>
+</ul>
+</section><section id="servicestalkservice.js" class="slide level2">
+<h2><span class="header-section-number">5.12</span> services/talkService.js</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//importamos el modelo</span>
+<span class="kw">var</span> Talk = <span class="fu">require</span>(<span class="st">&#39;../models/talkModel.js&#39;</span>);
+
+<span class="kw">var</span> findAllTalks = <span class="kw">function</span>(options) {
+    <span class="ot">Talk</span>.<span class="fu">find</span>(<span class="kw">function</span>(error, talks) {...});
+};
+<span class="kw">var</span> findTalkById = <span class="kw">function</span>(options) {
+    <span class="ot">Talk</span>.<span class="fu">findById</span>(<span class="ot">options</span>.<span class="fu">talkId</span>, <span class="kw">function</span>(error, talk) {...});
+};
+<span class="kw">var</span> saveTalk = <span class="kw">function</span>(options) {...};
+<span class="kw">var</span> findTalkByIdAndUpdate = <span class="kw">function</span>(options) {...};
+<span class="kw">var</span> findTalkByIdAndRemove = <span class="kw">function</span>(options) {...});
+
+<span class="co">// exportamos los servicios</span>
+<span class="ot">exports</span>.<span class="fu">findAllTalks</span>          = findAllTalks;
+<span class="ot">exports</span>.<span class="fu">findTalkById</span>          = findTalkById;
+<span class="ot">exports</span>.<span class="fu">saveTalk</span>              = saveTalk;
+<span class="ot">exports</span>.<span class="fu">findTalkByIdAndUpdate</span> = findTalkByIdAndUpdate;
+<span class="ot">exports</span>.<span class="fu">findTalkByIdAndRemove</span> = findTalkByIdAndRemove;</code></pre>
+</section></section>
+<section><section id="demo" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Demo</h1></section></section>
+<section><section id="alguna-pregunta" class="titleslide slide level1"><h1><span class="header-section-number">7</span> ¿Alguna pregunta?</h1></section></section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>
