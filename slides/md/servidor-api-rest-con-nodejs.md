@@ -88,7 +88,7 @@ es positivo o negativo.
 
 - Estas **transparencias** están hechas con:
 
-    - [https://github.com/asanzdiego/deck.js-pandoc-slides](https://github.com/asanzdiego/deck.js-pandoc-slides)
+    - [https://github.com/asanzdiego/reveal.js-pandoc-slides](https://github.com/asanzdiego/reveal.js-pandoc-slides)
 
 ## Licencia
 
