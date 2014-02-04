@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="generator" content="pandoc" />
   <meta name="description" content="Servidor API REST con Node.js" />
   <meta name="author" content="Adolfo Sanz De Diego" />
   <meta name="copyright" content="Servidor API REST con Node.js - Adolfo Sanz De Diego -  Octubre 2013" /> 
   <title>Servidor API REST con Node.js</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.min.css">
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -31,76 +31,71 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-	<!-- For syntax highlighting -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
 
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" id="theme">
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
   <!--
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
   -->
 
-
-	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
-
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" type="text/css" media="print">
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
   <!--
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/default.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
-  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
   -->
 
-  <!-- Overwrite images -->
-  <style type="text/css">
-    pre {
-      background: rgba(255, 255, 255, 0.9);
-      color: #222;
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
     }
-    code {
-      white-space: pre;
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
     }
-    .reveal section img {
-      margin: 15px 0px;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.9);
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
     }
-    strong {
-      color: #777
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
     }
   </style>
 
-  <!--[if lt IE 9]>
-  <script src="reveal.js/lib/js/html5shiv.js"></script>
-  <![endif]-->
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
 
 </head>
-<body>
-  <div class="reveal">
-    <div class="slides">
-
-<section>
-    <h1 class="title">Servidor API REST con Node.js</h2>
-    <h2 class="author">Adolfo Sanz De Diego</h2>
-    <h3 class="date">Octubre 2013</h3>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Servidor API REST con Node.js</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Octubre 2013</h4>
 </section>
 
-<section><section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">1</span> Acerca de</h1></section><section id="el-gul" class="slide level2">
+<section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">1</span> Acerca de</h1></section><section id="el-gul" class="slide level2">
 <h2><span class="header-section-number">1.1</span> El GUL</h2>
 <ul>
 <li>El GUL es el <strong>Grupo de Usuarios de Linux de la UC3M</strong>.</li>
@@ -221,8 +216,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="https://github.com/asanzdiego/curso-api-restful-nodejs-server-2013/tree/master/src">https://github.com/asanzdiego/curso-api-restful-nodejs-server-2013/tree/master/src</a></li>
 </ul></li>
 </ul>
-</section></section>
-<section><section id="apis-para-qué" class="titleslide slide level1"><h1><span class="header-section-number">2</span> APIs ¿Para qué?</h1></section><section id="aplicación-estándar" class="slide level2">
+</section>
+<section id="apis-para-qué" class="titleslide slide level1"><h1><span class="header-section-number">2</span> APIs ¿Para qué?</h1></section><section id="aplicación-estándar" class="slide level2">
 <h2><span class="header-section-number">2.1</span> Aplicación estándar</h2>
 <figure>
 <img src="../img/esquema-api-rest-01.png" />
@@ -297,8 +292,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <figure>
 <img src="../img/cup-ecce-homo.png" />
 </figure>
-</section></section>
-<section><section id="apis-restful" class="titleslide slide level1"><h1><span class="header-section-number">3</span> APIs RESTful</h1></section><section id="qué-es-rest" class="slide level2">
+</section>
+<section id="apis-restful" class="titleslide slide level1"><h1><span class="header-section-number">3</span> APIs RESTful</h1></section><section id="qué-es-rest" class="slide level2">
 <h2><span class="header-section-number">3.1</span> ¿Qué es REST?</h2>
 <ul>
 <li><p>REST (<strong>Representational State Transfer</strong>) es una técnica de arquitectura de software para sistemas hipermedia distribuidos como la World Wide Web.</p></li>
@@ -375,8 +370,8 @@ todos los métodos del protócolo HTTP.</code></pre></li>
 todos los métodos del protócolo HTTP.</code></pre></li>
 </ul></li>
 </ul>
-</section></section>
-<section><section id="node.js" class="titleslide slide level1"><h1><span class="header-section-number">4</span> Node.js</h1></section><section id="introducción" class="slide level2">
+</section>
+<section id="node.js" class="titleslide slide level1"><h1><span class="header-section-number">4</span> Node.js</h1></section><section id="introducción" class="slide level2">
 <h2><span class="header-section-number">4.1</span> Introducción</h2>
 <figure>
 <img src="../img/nodejs.png" />
@@ -443,8 +438,8 @@ todos los métodos del protócolo HTTP.</code></pre></li>
 <figure>
 <img src="../img/gato-aburrido.png" />
 </figure>
-</section></section>
-<section><section id="código" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Código</h1></section><section id="aplausos" class="slide level2">
+</section>
+<section id="código" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Código</h1></section><section id="aplausos" class="slide level2">
 <h2><span class="header-section-number">5.1</span> Aplausos</h2>
 <figure>
 <img src="../img/aplausos.gif" />
@@ -601,22 +596,55 @@ todos los métodos del protócolo HTTP.</code></pre></li>
 <span class="ot">exports</span>.<span class="fu">saveTalk</span>              = saveTalk;
 <span class="ot">exports</span>.<span class="fu">findTalkByIdAndUpdate</span> = findTalkByIdAndUpdate;
 <span class="ot">exports</span>.<span class="fu">findTalkByIdAndRemove</span> = findTalkByIdAndRemove;</code></pre>
-</section></section>
-<section><section id="demo" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Demo</h1></section></section>
-<section><section id="alguna-pregunta" class="titleslide slide level1"><h1><span class="header-section-number">7</span> ¿Alguna pregunta?</h1></section></section>
-    </div>
-  </div>
+</section>
+<section id="demo" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Demo</h1></section>
+<section id="alguna-pregunta" class="titleslide slide level1"><h1><span class="header-section-number">7</span> ¿Alguna pregunta?</h1></section>
 
-  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
-  <script src="../lib/reveal.js-master/js/reveal.min.js"></script>
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Octubre 2013</h4>
+</footer-->
 
-  <script>
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
 
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
 
-      });
-    </script>
-  </body>
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
 </html>

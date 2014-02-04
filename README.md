@@ -2,13 +2,13 @@
 
 ## Transparencias
 
-- SlideShare:
+- [SlideShare](http://www.slideshare.net/asanzdiego/servidor-api-rest-con-nodejs)
 
-    - [http://www.slideshare.net/asanzdiego/servidor-api-rest-con-nodejs](http://www.slideshare.net/asanzdiego/servidor-api-rest-con-nodejs)
+- [Deck Slides](http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/servidor-api-rest-con-nodejs-deck-slides.html)
 
-- GitHub Pages:
+- [Reveal Slides](http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/servidor-api-rest-con-nodejs-reveal-slides.html)
 
-    - [http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/servidor-api-rest-con-nodejs-reveal-slides.html](http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/servidor-api-rest-con-nodejs-reveal-slides.html)
+- [Plain HTML](http://asanzdiego.github.io/curso-api-restful-nodejs-server-2013/slides/export/servidor-api-rest-con-nodejs.html)
 
 ## Código
 
